@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E2293CB62FB3290B00AEC8E0 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E2293CB52FB3290B00AEC8E0 /* SDWebImage */; };
+		E2293CB82FB3290B00AEC8E0 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E2293CB72FB3290B00AEC8E0 /* SDWebImageMapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E253D1FF2F9DF39E0090D1B5 /* Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2293CB82FB3290B00AEC8E0 /* SDWebImageMapKit in Frameworks */,
+				E2293CB62FB3290B00AEC8E0 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,8 @@
 			);
 			name = Movie;
 			packageProductDependencies = (
+				E2293CB52FB3290B00AEC8E0 /* SDWebImage */,
+				E2293CB72FB3290B00AEC8E0 /* SDWebImageMapKit */,
 			);
 			productName = Movie;
 			productReference = E253D1FF2F9DF39E0090D1B5 /* Movie.app */;
@@ -107,6 +116,9 @@
 			);
 			mainGroup = E253D1F62F9DF39E0090D1B5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E2293CB42FB3290B00AEC8E0 /* XCRemoteSwiftPackageReference "sdwebimage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E253D2002F9DF39E0090D1B5 /* Products */;
 			projectDirPath = "";
@@ -150,8 +162,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -181,8 +192,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,6 +351,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2293CB42FB3290B00AEC8E0 /* XCRemoteSwiftPackageReference "sdwebimage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sdwebimage/sdwebimage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2293CB52FB3290B00AEC8E0 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2293CB42FB3290B00AEC8E0 /* XCRemoteSwiftPackageReference "sdwebimage" */;
+			productName = SDWebImage;
+		};
+		E2293CB72FB3290B00AEC8E0 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2293CB42FB3290B00AEC8E0 /* XCRemoteSwiftPackageReference "sdwebimage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E253D1F72F9DF39E0090D1B5 /* Project object */;
 }
