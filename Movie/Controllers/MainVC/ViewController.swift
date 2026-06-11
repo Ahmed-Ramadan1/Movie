@@ -21,11 +21,16 @@ class ViewController: UIViewController {
     // Varibles:
     var cellDataSource: [MovieTableCellViewModel] = []
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         bindViewModel()
+        
+        // navi
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,28 +39,39 @@ class ViewController: UIViewController {
     }
     
     func bindViewModel(){
-        viewModel.isLoading.bind { [weak self] isLoading in
-            guard let self = self, let isLoading = isLoading else {
-                return
-            }
+        viewModel.isLoading = { isLoading in
             DispatchQueue.main.async {
                 if isLoading {
                     self.activityIndicator.startAnimating()
                 } else {
                     self.activityIndicator.stopAnimating()
                 }
+                
+                
             }
         }
-     
-        viewModel.cellDataSource.bind { [weak self]movies in
-            guard let self, let movies else {
-                return
-            }
-            self.cellDataSource = movies
-            self.reloadTableView()
+        viewModel.reloadTableView = { [weak self] in
+//            self.cellDataSource = movies
+            self?.reloadTableView()
             
         }
     }
+            viewModel.isLoading.bind { [weak self] isLoading in
+                guard let self = self, let isLoading = isLoading else {
+                    return
+                }
+                            }
+            }
+    
+    //        viewModel.cellDataSource.bind { [weak self]movies in
+    //            guard let self, let movies else {
+    //                return
+    //            }
+    //            self.cellDataSource = movies
+    //            self.reloadTableView()
+    //
+    //        }
+    //    }
     
     func openDetail(movieId: Int) {
         guard let movie = viewModel.retrieveMovie(with: movieId) else {
@@ -70,6 +86,8 @@ class ViewController: UIViewController {
         
         
     }
+    
+   
     
 }
 

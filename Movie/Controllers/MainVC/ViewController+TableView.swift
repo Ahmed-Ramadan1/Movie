@@ -31,14 +31,14 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         viewModel.numberOfSections()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(in: section)
+        viewModel.cellDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainMovieCell.identifier, for: indexPath) as? MainMovieCell else {
             return UITableViewCell()
         }
-        let cellViewModel = cellDataSource[indexPath.row]
+        let cellViewModel = viewModel.cellDataSource[indexPath.row]
         cell.setupCell(viewModel: cellViewModel)
         cell.selectionStyle = .none
         //cell.textLabel?.text = viewModel.getMovieTitle(movieData)
@@ -50,7 +50,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movieId = cellDataSource[indexPath.row].id
+        let movieId = viewModel.cellDataSource[indexPath.row].id
         self.openDetail(movieId: movieId)
     }
 }
