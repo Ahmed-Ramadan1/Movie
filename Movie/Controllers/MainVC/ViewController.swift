@@ -56,22 +56,7 @@ class ViewController: UIViewController {
             
         }
     }
-            viewModel.isLoading.bind { [weak self] isLoading in
-                guard let self = self, let isLoading = isLoading else {
-                    return
-                }
-                            }
-            }
-    
-    //        viewModel.cellDataSource.bind { [weak self]movies in
-    //            guard let self, let movies else {
-    //                return
-    //            }
-    //            self.cellDataSource = movies
-    //            self.reloadTableView()
-    //
-    //        }
-    //    }
+
     
     func openDetail(movieId: Int) {
         guard let movie = viewModel.retrieveMovie(with: movieId) else {

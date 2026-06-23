@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchMovieVC" customModule="Movie" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="rGR-eh-k8c" id="mzt-Rx-zZn"/>
+                <outlet property="searchResult" destination="KQ3-7e-ep2" id="AMF-eQ-4tC"/>
                 <outlet property="tableView" destination="ONE-0P-Njj" id="pgN-i5-zcv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,13 +25,27 @@
                     <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQ3-7e-ep2">
+                    <rect key="frame" x="196.66666666666666" y="426.66666666666669" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rGR-eh-k8c">
+                    <rect key="frame" x="178" y="432.66666666666669" width="37" height="37"/>
+                    <color key="color" systemColor="systemGray2Color"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="rGR-eh-k8c" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="7j4-QZ-RRR"/>
+                <constraint firstItem="KQ3-7e-ep2" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-24.5" id="IK0-g9-3N3"/>
                 <constraint firstItem="ONE-0P-Njj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XCw-q1-b2J"/>
                 <constraint firstItem="ONE-0P-Njj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bJk-Vz-Mi5"/>
+                <constraint firstItem="rGR-eh-k8c" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="eD0-iS-nr5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ONE-0P-Njj" secondAttribute="bottom" id="qwu-DK-7cI"/>
+                <constraint firstItem="KQ3-7e-ep2" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="vVD-5e-ohD"/>
                 <constraint firstItem="ONE-0P-Njj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wQc-Ar-6hd"/>
             </constraints>
             <point key="canvasLocation" x="84.732824427480907" y="153.52112676056339"/>
@@ -38,6 +54,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

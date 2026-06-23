@@ -13,8 +13,13 @@ extension SearchMovieVC: UISearchResultsUpdating, UITableViewDelegate, UITableVi
     
     func updateSearchResults(for searchController: UISearchController) {
         let query = searchController.searchBar.text ?? ""
-        viewModel.searchMovie(query: query)
+        
+        searchTimer?.invalidate()
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
+            self?.viewModel.searchMovie(query: query)
+        }
         print(query)
+        //checkResults()
     }
     
     func setupTableView() {
@@ -53,5 +58,10 @@ extension SearchMovieVC: UISearchResultsUpdating, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movieId = viewModel.cellDataSource[indexPath.row].id
+        openDetail(movieId: movieId)
     }
 }

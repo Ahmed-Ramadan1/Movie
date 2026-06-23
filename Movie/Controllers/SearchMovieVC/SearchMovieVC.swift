@@ -8,43 +8,94 @@
 import UIKit
 
 class SearchMovieVC: UIViewController {
-    
+
+    @IBOutlet weak var searchResult: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
-    
+
     // ViewModel
-    var viewModel : SearchMovieViewModel = SearchMovieViewModel()
-    
+    var viewModel: SearchMovieViewModel = SearchMovieViewModel()
+
     // Varibles:
-    var cellDataSource: [MovieTableCellViewModel] = []
-    
-    private let searchController = UISearchController(searchResultsController: nil)
+    //var cellDataSource: [MovieTableCellViewModel] = []
+    var searchTimer : Timer?
+    private let searchController = UISearchController(
+        searchResultsController: nil
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+       
         
         title = "Search"
         setupTableView()
         bindViewModel()
-       
+
         configureSearchController()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        activityIndicator.stopAnimating()
+        self.searchResult.text = "No results found"
+        self.searchResult.isHidden = true
+    }
 
-     func configureSearchController() {
+    func configureSearchController() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        
+
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
     }
-    
+
     func bindViewModel() {
         viewModel.reloadTableView = { [weak self] in
             self?.reloadTableView()
-            
+            self?.checkResults()
+
+        }
+        
+        viewModel.isLoading = { isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self.activityIndicator.startAnimating()
+                } else {
+                    self.activityIndicator.stopAnimating()
+                }
+                
+                
+            }
+        }
+
+
+    }
+    
+    func openDetail(movieId: Int) {
+        guard let movie = viewModel.retrieveMovie(with: movieId)
+        else {
+            return
+        }
+        let detailsVM = DetailsMovieViewModel(movie: movie)
+        let detailsVC = DetailsMovieVC(viewModel: detailsVM)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(detailsVC, animated: true)
         }
         
     }
-
-  
+    
+    func checkResults() {
+       
+            DispatchQueue.main.async {
+                let query = self.searchController.searchBar.text ?? ""
+                if self.viewModel.cellDataSource.isEmpty && !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
+                    self.searchResult.isHidden = false
+                }else {
+                    self.searchResult.isHidden = true
+               
+            }
+        }
+    }
 
 }
