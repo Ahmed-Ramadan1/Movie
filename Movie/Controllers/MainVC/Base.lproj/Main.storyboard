@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View-->
+        <!--Tob Trending Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Movie" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,30 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xiA-KO-Sqj">
-                                <rect key="frame" x="0.0" y="172" width="393" height="563"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kbg-BW-Ctj">
+                                <rect key="frame" x="0.0" y="172" width="393" height="680"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pQy-7r-BzK">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SoA-mi-ARZ">
                                 <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
                                 <color key="color" systemColor="systemGray2Color"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.023529411764705882" green="0.023529411764705882" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="SoA-mi-ARZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2f5-VI-IqG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xiA-KO-Sqj" secondAttribute="bottom" id="3Zf-uu-Sds"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xiA-KO-Sqj" secondAttribute="trailing" id="OXt-sa-UnX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kbg-BW-Ctj" secondAttribute="trailing" id="7E1-bH-JzO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kbg-BW-Ctj" secondAttribute="bottom" constant="-117" id="HCb-Yg-Vkp"/>
+                            <constraint firstItem="kbg-BW-Ctj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QD0-BX-8Ap"/>
                             <constraint firstItem="SoA-mi-ARZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Vw4-Qm-utO"/>
-                            <constraint firstItem="xiA-KO-Sqj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fJM-Na-dfk"/>
-                            <constraint firstItem="xiA-KO-Sqj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zhz-LI-Vq2"/>
+                            <constraint firstItem="kbg-BW-Ctj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zJV-tj-EAU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Main View" id="y0x-XH-R1D"/>
+                    <navigationItem key="navigationItem" title="Tob Trending Movies" id="y0x-XH-R1D"/>
                     <connections>
                         <outlet property="activityIndicator" destination="SoA-mi-ARZ" id="oUa-fH-KOb"/>
-                        <outlet property="tableView" destination="xiA-KO-Sqj" id="yWb-ru-G9f"/>
+                        <outlet property="collectionView" destination="kbg-BW-Ctj" id="L7Z-cB-BnE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,6 +78,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Z98-xo-qwv" customClass="MainTabBarController" customModule="Movie" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="drH-WL-S8w">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -88,7 +96,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

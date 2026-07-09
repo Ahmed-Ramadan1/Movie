@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension SearchMovieVC: UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource {
+extension SearchMovieVC: UISearchResultsUpdating, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -22,46 +22,54 @@ extension SearchMovieVC: UISearchResultsUpdating, UITableViewDelegate, UITableVi
         //checkResults()
     }
     
-    func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+    func setupcollectionView() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
-        self.tableView.backgroundColor = .clear
-        tableView.keyboardDismissMode = .onDrag
+        self.collectionView.backgroundColor = .clear
+        collectionView.keyboardDismissMode = .onDrag
         self.registeCells()
     }
     
     func registeCells() {
-        tableView.register(MainMovieCell.register(), forCellReuseIdentifier: MainMovieCell.identifier)
+        collectionView.register(MainMovieCellCV.register(), forCellWithReuseIdentifier: MainMovieCellCV.identifier)
     }
-    
-    func reloadTableView() {
+    func reloadCollectionView() {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.collectionView.reloadData()
         }
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.cellDataSource.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainMovieCell.identifier, for: indexPath) as? MainMovieCell else {
-            return UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainMovieCellCV.identifier, for: indexPath) as? MainMovieCellCV else {
+            return UICollectionViewCell()
         }
-        let cellDataSourceVM = viewModel.cellDataSource[indexPath.row]
-        cell.setupCell(viewModel: cellDataSourceVM)
-        
+        let cellViewModel = viewModel.cellDataSource[indexPath.row]
+        cell.setupCell(viewModel: cellViewModel)
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movieId = viewModel.cellDataSource[indexPath.row].id
+        self.openDetail(movieId: movieId)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let padding: CGFloat = 24 // 8 + 8 (insets left + right) + 8 (inter)
+            let width = (collectionView.bounds.width - padding) / 2
+            return CGSize(width: width, height: width * 1.8) // 1.8 ratio includes space for title
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movieId = viewModel.cellDataSource[indexPath.row].id
-        openDetail(movieId: movieId)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        8
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     }
 }

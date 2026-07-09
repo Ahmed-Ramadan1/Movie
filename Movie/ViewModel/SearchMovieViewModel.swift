@@ -11,15 +11,15 @@ class SearchMovieViewModel {
     
    // var cellDataSource: (([MovieTableCellViewModel]) -> ())?
     var dataSource: TrendingMovieModel?
-    var cellDataSource: [MovieTableCellViewModel] = []
-    var reloadTableView: (() -> Void)?
+    var cellDataSource: [MovieCollectionCellViewModel] = []
+    var reloadCollectionView: (() -> Void)?
     var isLoading: ((Bool) -> Void)?
     
     
     func searchMovie(query: String) {
         if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             cellDataSource.removeAll()
-            reloadTableView?()
+            reloadCollectionView?()
             return
         }
         self.isLoading?(true)
@@ -29,9 +29,9 @@ class SearchMovieViewModel {
             switch result {
             case .success(let data):
                 print("Search Results Counts: \(data.results.count)")
-                self?.cellDataSource = data.results.map { MovieTableCellViewModel(movie: $0) }
+                self?.cellDataSource = data.results.map { MovieCollectionCellViewModel(movie: $0) }
                 self?.dataSource = data
-                self?.reloadTableView?()
+                self?.reloadCollectionView?()
             case .failure(let error):
                 print(error)
             }

@@ -11,8 +11,9 @@ class SearchMovieVC: UIViewController {
 
     @IBOutlet weak var searchResult: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var tableView: UITableView!
-
+    //@IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     // ViewModel
     var viewModel: SearchMovieViewModel = SearchMovieViewModel()
 
@@ -27,9 +28,10 @@ class SearchMovieVC: UIViewController {
         super.viewDidLoad()
 
        
-        
+        navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         title = "Search"
-        setupTableView()
+        //setupTableView()
+        setupcollectionView()
         bindViewModel()
 
         configureSearchController()
@@ -51,8 +53,8 @@ class SearchMovieVC: UIViewController {
     }
 
     func bindViewModel() {
-        viewModel.reloadTableView = { [weak self] in
-            self?.reloadTableView()
+        viewModel.reloadCollectionView = { [weak self] in
+            self?.reloadCollectionView()
             self?.checkResults()
 
         }

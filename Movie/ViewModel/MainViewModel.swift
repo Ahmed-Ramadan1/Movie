@@ -15,8 +15,8 @@ class MainViewModel {
 
     var isLoading: ((Bool) -> Void)?
 
-    var cellDataSource: [MovieTableCellViewModel] = []
-    var reloadTableView: (() -> Void)?
+    var cellDataSource: [MovieCollectionCellViewModel] = []
+    var reloadCollectionView: (() -> Void)?
     func numberOfSections() -> Int {
         1
     }
@@ -35,9 +35,9 @@ class MainViewModel {
             case .success(let data):
                 print("Top Trending Counts: \(data.results.count)")
                 self?.cellDataSource = data.results.map { movie in
-                    MovieTableCellViewModel(movie: movie)
+                    MovieCollectionCellViewModel(movie: movie)
                 }
-                self?.reloadTableView?()
+                self?.reloadCollectionView?()
                 self?.dataSource = data
             case .failure(let error):
                 print(error)

@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,41 +21,49 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mbe-ZY-k42">
-                    <rect key="frame" x="0.0" y="128" width="393" height="213"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="586"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-Gb-knq">
-                    <rect key="frame" x="8" y="357" width="377" height="38"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="8" y="543" width="377" height="39.666666666666629"/>
+                    <fontDescription key="fontDescription" name="NotoSansSyriac-Regular_Bold" family="Noto Sans Syriac" pointSize="28"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNp-GZ-Pyg">
-                    <rect key="frame" x="8" y="405" width="377" height="26"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNp-GZ-Pyg">
+                    <rect key="frame" x="16" y="603.66666666666663" width="361" height="16.333333333333371"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtd-Gq-76a">
+                    <rect key="frame" x="16" y="719" width="291" height="58"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Play">
+                        <fontDescription key="titleFontDescription" name="Arial-BoldMT" family="Arial" pointSize="22"/>
+                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.023529411764705882" green="0.023529411764705882" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="ZNp-GZ-Pyg" firstAttribute="top" secondItem="RCP-Gb-knq" secondAttribute="bottom" constant="10" id="MnT-I2-o4x"/>
+                <constraint firstItem="dtd-Gq-76a" firstAttribute="top" secondItem="Mbe-ZY-k42" secondAttribute="bottom" constant="133" id="FlU-gr-zsO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dtd-Gq-76a" secondAttribute="bottom" constant="7" id="G8t-LY-CWf"/>
+                <constraint firstItem="ZNp-GZ-Pyg" firstAttribute="top" secondItem="RCP-Gb-knq" secondAttribute="bottom" constant="21" id="MnT-I2-o4x"/>
                 <constraint firstItem="RCP-Gb-knq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Y10-Yw-OuL"/>
-                <constraint firstItem="Mbe-ZY-k42" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.25" id="aBs-Cs-I4O"/>
-                <constraint firstItem="RCP-Gb-knq" firstAttribute="top" secondItem="Mbe-ZY-k42" secondAttribute="bottom" constant="16" id="c1u-BA-oHS"/>
-                <constraint firstItem="Mbe-ZY-k42" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="128" id="hh8-wT-oTw"/>
+                <constraint firstItem="Mbe-ZY-k42" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.25" constant="373" id="aBs-Cs-I4O"/>
+                <constraint firstItem="RCP-Gb-knq" firstAttribute="top" secondItem="Mbe-ZY-k42" secondAttribute="bottom" constant="-43" id="c1u-BA-oHS"/>
+                <constraint firstItem="Mbe-ZY-k42" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hh8-wT-oTw"/>
                 <constraint firstItem="Mbe-ZY-k42" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="j6o-tT-Yek"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZNp-GZ-Pyg" secondAttribute="trailing" constant="8" id="jzB-NS-mcN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZNp-GZ-Pyg" secondAttribute="trailing" constant="16" id="jzB-NS-mcN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dtd-Gq-76a" secondAttribute="trailing" constant="86" id="nQf-Af-2o4"/>
+                <constraint firstItem="dtd-Gq-76a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="s5T-Kw-yW6"/>
                 <constraint firstItem="Mbe-ZY-k42" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tD8-S0-Bb3"/>
-                <constraint firstItem="ZNp-GZ-Pyg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="w56-Gq-tx0"/>
+                <constraint firstItem="ZNp-GZ-Pyg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="w56-Gq-tx0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RCP-Gb-knq" secondAttribute="trailing" constant="8" id="x0O-kV-jeU"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="138.73239436619718"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

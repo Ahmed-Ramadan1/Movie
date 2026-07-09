@@ -23,7 +23,7 @@ class DetailsMovieViewModel {
         self.movieID = movie.id
         self.movieTitle = movie.title ?? movie.name ?? ""
         self.movieDescription = movie.overview ?? ""
-        self.movieImage = makeImgeURL(movie.backdropPath ?? "")
+        self.movieImage = makeImgeURL(movie.posterPath ?? "")
     }
     
     private func makeImgeURL(_ path: String) -> URL? {

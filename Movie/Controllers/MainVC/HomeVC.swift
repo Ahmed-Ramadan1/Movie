@@ -11,7 +11,8 @@ class ViewController: UIViewController {
     
     
     //IBoutlets:
-    @IBOutlet weak var tableView: UITableView!
+    //@IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -26,7 +27,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
+        navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        //setupTableView()
+        setupcollectionView()
         bindViewModel()
         
         // navi
@@ -50,9 +53,9 @@ class ViewController: UIViewController {
                 
             }
         }
-        viewModel.reloadTableView = { [weak self] in
+        viewModel.reloadCollectionView = { [weak self] in
 //            self.cellDataSource = movies
-            self?.reloadTableView()
+            self?.reloadCollectionView()
             
         }
     }
