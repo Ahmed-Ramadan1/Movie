@@ -50,7 +50,10 @@ final class FavoritesManager {
         UserDefaults.standard.set(data, forKey: favoritesKey)
     }
     
-    
+    func isFavorite(_ movie: Movie) -> Bool {
+        let favorites = getFavorites()
+        return favorites.contains(where: {$0.id == movie.id} )
+    }
 }
 
 
